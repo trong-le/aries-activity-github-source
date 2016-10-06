@@ -32,7 +32,7 @@ This integration uses 13 methods.
 `listMergedPullRequests` - List all pull requests that have been merged.
 
 ### List Repos
-`listRepos` - Lists all the repositories that are accessible by the authenticates user.
+`listRepos` - Lists all the repositories that are accessible by the authenticated user.
 
 ### List Org Repos
 `listOrgRepos` - Lists all repositories for the specified organization. 
@@ -63,7 +63,7 @@ The token is the access token associated with your user account. An access token
 ```
 
 ### Method
-The method to use to retrieve data. List of methods can be found above.
+The method used to retrieve data. List of methods can be found above.
 ```javascript 
 "method": "listIssues"
 ```
@@ -95,7 +95,6 @@ The state parameter specifies the state of the pull request inside of a reposito
 ## Response
 This is an example response with the `listIssues` endpoint.
 ```javascript
-
   {
     "id": 1,
     "url": "https://api.github.com/repos/octocat/Hello-World/issues/1347",
