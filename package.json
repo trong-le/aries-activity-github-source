@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "aries-data": "aries-data/aries-data",
-    "github": "^3.1.1"
+    "github": "^3.1.1",
+    "thenify": "^3.2.0"
   }
 }
