@@ -201,3 +201,6 @@ This is an example response with the `listIssues` endpoint.
   }
 ]
 ```
+
+## License
+MIT
