@@ -15,5 +15,5 @@ test('test method', async (t) => {
     const source = new GithubSource();
     const client = source.authenticatedClient(config);
     const data = await source.getAll(config, client);
-    t.comment(JSON.stringify(data));
+    t.ok(data);
 });
