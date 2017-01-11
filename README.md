@@ -35,7 +35,7 @@ This integration uses 13 methods.
 `listRepos` - Lists all the repositories that are accessible by the authenticated user.
 
 ### List Org Repos
-`listOrgRepos` - Lists all repositories for the specified organization. 
+`listOrgRepos` - Lists all repositories for the specified organization.
 
 ### List Repo Commit Comments
 `listRepoCommitComments` - Lists the commit comments for the specified repository.
@@ -51,7 +51,7 @@ This integration uses 13 methods.
 The configuration takes 3 required parameters, `user`, `password`, and `method`. And for each method, the required parameters vary.
 
 ### User
-The user account to retrieve data for. 
+The user account to retrieve data for.
 ```javascript
 "user": "astronomer"
 ```
@@ -64,12 +64,12 @@ The token is the access token associated with your user account. An access token
 
 ### Method
 The method used to retrieve data. List of methods can be found above.
-```javascript 
+```javascript
 "method": "listIssues"
 ```
 
 ### Repo
-The repo is the specific repository to grab information from. Required in all methods but `listOrgRepos`.
+The repo is the specific repository to grab information from. Required in all methods but `listOrgRepos`. Note: setting the repo field to `all` will cause the activity to first fetch a list of all repositories, then run the specified `method` on each repository.
 ```javascript
 "repo": "test_repo"
 ```

@@ -1,5 +1,6 @@
 export default {
-	user: 'trong-le',
+	user: 'jlaneve',
 	token: process.env.TOKEN,
-	repo: 'Calculator-Swift'
+	repo: 'all',
+    method: 'listRepoCommits'
 };
