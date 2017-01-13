@@ -1,6 +1,7 @@
 export default {
-	user: 'jlaneve',
+	user: 'astronomerio',
 	token: process.env.TOKEN,
-	repo: 'all',
-    method: 'listRepoCommits'
+	repo: 'all_org',
+    org: 'astronomerio',
+    method: 'listIssues'
 };
