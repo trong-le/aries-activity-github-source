@@ -69,7 +69,7 @@ The method used to retrieve data. List of methods can be found above.
 ```
 
 ### Repo
-The repo is the specific repository to grab information from. Required in all methods but `listOrgRepos`. Note: setting the repo field to `all` will cause the activity to first fetch a list of all repositories that the user account has access to, then run the specified `method` on each repository. From Github: "This includes repositories owned by the authenticated user, repositories where the authenticated user is a collaborator, and repositories that the authenticated user has access to through an organization membership."
+The repo is the specific repository to grab information from. Required in all methods but `listOrgRepos`. Note: setting the repo field to `allUser` or `allOrg` will cause the activity to first fetch a list of all repositories that the user account has access to (either personal or within an organization respectively), then run the specified `method` on each repository.
 ```javascript
 "repo": "test_repo"
 ```
