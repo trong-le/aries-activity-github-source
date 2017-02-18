@@ -2,7 +2,7 @@
 
 # Aries Integration for Github
 
-This is an integration for [Github](https://github.com/).
+This is an integration to fetch data from [Github](https://github.com/).
 
 ## Methods
 This integration uses 13 methods.
@@ -34,9 +34,6 @@ This integration uses 13 methods.
 ### List Repos
 `listRepos` - Lists all the repositories that are accessible by the authenticated user.
 
-### List Org Repos
-`listOrgRepos` - Lists all repositories for the specified organization.
-
 ### List Repo Commit Comments
 `listRepoCommitComments` - Lists the commit comments for the specified repository.
 
@@ -48,7 +45,7 @@ This integration uses 13 methods.
 
 ## Configuration
 
-The configuration takes 3 required parameters, `user`, `password`, and `method`. And for each method, the required parameters vary.
+The configuration takes 3 required parameters, `user`, `password`, and `method`. For each method, the required parameters vary.
 
 ### User
 The user account to retrieve data for.
@@ -68,22 +65,27 @@ The method used to retrieve data. List of methods can be found above.
 "method": "listIssues"
 ```
 
+<<<<<<< Updated upstream
 ### Repo
 The repo is the specific repository to grab information from. Required in all methods but `listOrgRepos`. Note: setting the repo field to `all` will cause the activity to first fetch a list of all repositories, then run the specified `method` on each repository.
+=======
+### Owner
+The name of the repository's owner. Required in all methods. Note: This field will be equal to either an organization or user's name.
+>>>>>>> Stashed changes
+```javascript
+"owner": "aries-data"
+```
+
+### Repo
+The repo is the specific repository to grab information from. Required in all methods except `listOrgRepos`. Note: setting the repo field to `all` will cause the activity to first fetch a list of all repositories that the user account has access to (taking the `owner` field into account), then run the specified `method` on each repository.
 ```javascript
 "repo": "test_repo"
 ```
 
-### Org
-The org is the name of the group-owned repository to grab data for. This parameter is only, and the single, used parameter for the method, `listOrgRepos`.
+### Issue Number
+The issue num is the number of the specified issue. This parameter is only required in the method `listIssueEvents`.
 ```javascript
-"org": "astronomer"
-```
-
-### Issue Num
-The issue num is the number of the specified issue. This parameter is only in the method, `listIssueEvents`.
-```javascript
-"issueNum": "4"
+"issue_number": "4"
 ```
 
 ### State
