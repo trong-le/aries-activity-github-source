@@ -4,6 +4,8 @@
 
 This is an integration for [Github](https://github.com/).
 
+[![CircleCI](https://circleci.com/gh/aries-data/aries-activity-github-source.svg?style=svg)](https://circleci.com/gh/aries-data/aries-activity-github-source)
+
 ## Methods
 This integration uses 13 methods.
 
