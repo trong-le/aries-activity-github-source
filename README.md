@@ -65,27 +65,16 @@ The method used to retrieve data. List of methods can be found above.
 "method": "listIssues"
 ```
 
-<<<<<<< Updated upstream
 ### Repo
-The repo is the specific repository to grab information from. Required in all methods but `listOrgRepos`. Note: setting the repo field to `all` will cause the activity to first fetch a list of all repositories, then run the specified `method` on each repository.
-=======
-### Owner
-The name of the repository's owner. Required in all methods. Note: This field will be equal to either an organization or user's name.
->>>>>>> Stashed changes
-```javascript
-"owner": "aries-data"
-```
-
-### Repo
-The repo is the specific repository to grab information from. Required in all methods except `listOrgRepos`. Note: setting the repo field to `all` will cause the activity to first fetch a list of all repositories that the user account has access to (taking the `owner` field into account), then run the specified `method` on each repository.
+The repo is the specific repository to grab information from. Required in all methods. Note: setting the repo field to `all` will cause the activity to first fetch a list of all repositories that the user account has access to (taking the `owner` field into account), then run the specified `method` on each repository.
 ```javascript
 "repo": "test_repo"
 ```
 
 ### Issue Number
-The issue num is the number of the specified issue. This parameter is only required in the method `listIssueEvents`.
+The issue number is the number of the specified issue, or `all` to run the method for all issues. This parameter is only required in the `listIssueEvents` and `listIssueComments` methods.
 ```javascript
-"issue_number": "4"
+"number": "4"
 ```
 
 ### State
