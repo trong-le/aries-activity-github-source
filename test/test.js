@@ -18,3 +18,12 @@ test('test method', async (t) => {
     t.comment(data);
     t.ok(data);
 });
+
+test('test list issue comment with number param', async (t) => {
+    const { user, repo, number } = config;
+    const source = new GithubSource();
+    const client = source.authenticatedClient(config);
+    const data = await source.getComments(user, repo, number);
+    t.comment(data);
+    t.ok(data);
+});
