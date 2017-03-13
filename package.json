@@ -5,7 +5,12 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "node -r babel-register -r babel-polyfill -r dotenv/config test/test.js | faucet",
-    "tail": "tail -f app.log | bunyan -o short"
+    "tail": "tail -f app.log | bunyan -o short",
+    "lint": "eslint lib",
+    "tail": "tail -f app.log | bunyan -o short",
+    "build-image": "docker build -t astronomerio/github-source .",
+    "test-compose": "docker-compose up --abort-on-container-exit --force-recreate --build"
+
   },
   "author": "trong-le",
   "license": "ISC",
