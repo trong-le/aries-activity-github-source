@@ -2,13 +2,6 @@ import test from 'blue-tape';
 import GithubSource from '../lib/index.js';
 import config from './test-config';
 
-// example - make sure configuration is the same
-test('proper configuration', t => {
-    t.equal(GithubSource.props.name, require('../package.json').name);
-    t.equal(GithubSource.props.version, require('../package.json').version);
-    t.end();
-});
-
 test('test individual methods', async (t) => {
     const source = new GithubSource();
     const client = source.authenticatedClient(config);
@@ -49,5 +42,5 @@ test('test all repo field', async t => {
     });
     Promise.all(promises).then(results => {
         results.forEach(res => { t.ok(res); t.comment(JSON.stringify(res)); });
-    }).catch(e => t.comment("ERROR: " + e));    
+    }).catch(e => t.comment("ERROR: " + e));
 });
