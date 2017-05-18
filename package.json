@@ -4,40 +4,34 @@
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-     "test": "mocha --require babel-polyfill --compilers js:babel-register",
-     "test-watch": "mocha -w --require babel-polyfill --compilers js:babel-register",
-     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
-     "lint": "eslint lib",
-     "tail": "tail -f app.log | bunyan -o short",
-     "build-image": "docker build -t astronomerio/github-source .",
-     "test-compose": "docker-compose up --abort-on-container-exit --force-recreate --build"
+    "test": "mocha --timeout 2000000 --require babel-polyfill --compilers js:babel-register",
+    "test-watch": "mocha -w --require babel-polyfill --compilers js:babel-register",
+    "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
+    "lint": "eslint lib",
+    "build-image": "docker build --no-cache -t astronomerio/github-source .",
+    "tail": "tail -f app.log | bunyan -o short"
   },
-  "author": "trong-le",
-  "license": "ISC",
+  "author": "",
+  "license": "MIT",
   "devDependencies": {
-    "blue-tape": "^0.2.0",
     "babel-cli": "^6.5.1",
     "babel-core": "^6.5.1",
-    "babel-eslint": "^7.1.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "^6.5.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
-    "chai": "^3.5.0",
-    "isparta": "^4.0.0",
-    "eslint": "^3.12.2",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-babel": "^4.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.8.0",
-    "mocha": "^3.1.2",
-    "sinon": "^1.17.6"
+    "babel-register": "^6.5.0",
+    "blue-tape": "^0.2.0",
+    "bunyan": "^1.8.0",
+    "dotenv": "^2.0.0",
+    "faucet": "0.0.1",
+    "nock": "^7.0.2"
   },
   "dependencies": {
     "aries-data": "aries-data/aries-data",
     "es6-promisify": "^4.0.0",
     "github": "^3.1.1",
-    "lodash.flattendeep": "^4.4.0"
+    "lodash.flattendeep": "^4.4.0",
+    "mocha": "^3.2.0"
   }
 }
