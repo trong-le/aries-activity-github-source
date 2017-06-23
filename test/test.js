@@ -11,7 +11,7 @@ describe('GithubSource', () => {
     describe('listIssues', () => {
     	before(function() {
     		nock(URL)
-    		.get(`/repos/${config.org}/${config.repo}/issues?access_token=${config.token}`)
+    		.get(`/repos/${config.org}/${config.repo}/issues`)
     		.reply('200', fixtures.response);
     	});
     	it ('authenticates the client and gets all issues', async () => {
@@ -25,7 +25,7 @@ describe('GithubSource', () => {
     describe('listAssignees', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/assignees?access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/assignees`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all assignees', async () => {
@@ -39,7 +39,7 @@ describe('GithubSource', () => {
     describe('listIssueComments', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues/${config.number}/comments?access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/issues/${config.number}/comments`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all issue comments', async () => {
@@ -53,7 +53,7 @@ describe('GithubSource', () => {
     describe('listRepoComments', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues/comments?access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/issues/comments`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all repo comments', async () => {
@@ -67,7 +67,7 @@ describe('GithubSource', () => {
     describe('listIssueEvents', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues/${config.number}/timeline?access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/issues/${config.number}/timeline`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all issue events', async () => {
@@ -81,7 +81,7 @@ describe('GithubSource', () => {
     describe('listRepoEvents', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues/events?access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/issues/events`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all repo events', async () => {
@@ -95,7 +95,7 @@ describe('GithubSource', () => {
     describe('listPullRequests', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/pulls?state=${config.state}&access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/pulls?state=undefined`)
             .reply('200', fixtures.response);;
         });
         it ('authenticates the client and gets all pull requests', async () => {
@@ -109,7 +109,7 @@ describe('GithubSource', () => {
     describe('listRepos', () => {
         before(function() {
             nock(URL)
-            .get(`/user/repos?access_token=${config.token}`)
+            .get(`/user/repos`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all repos', async () => {
@@ -123,7 +123,7 @@ describe('GithubSource', () => {
     describe('listMergedPullRequests', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/pulls?state=${config.state}&access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/pulls?state=undefined`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all merged pull requests', async () => {
@@ -137,7 +137,7 @@ describe('GithubSource', () => {
     describe('listReposForUser', () => {
         before(function() {
             nock(URL)
-            .get(`/users/${config.org}/repos?access_token=${config.token}`)
+            .get(`/users/${config.user}/repos`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all repos for user', async () => {
@@ -151,7 +151,7 @@ describe('GithubSource', () => {
     describe('listOrgRepos', () => {
         before(function() {
             nock(URL)
-            .get(`/orgs/${config.org}/repos?access_token=${config.token}`)
+            .get(`/orgs/${config.org}/repos`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all repos for org', async () => {
@@ -165,7 +165,7 @@ describe('GithubSource', () => {
     describe('listRepoCommitComments', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/comments?access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/comments`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all repo commit comments', async () => {
@@ -179,7 +179,7 @@ describe('GithubSource', () => {
     describe('listRepoCommits', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/commits?access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/commits`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all repo commits', async () => {
@@ -193,7 +193,7 @@ describe('GithubSource', () => {
     describe('listCollaborators', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/collaborators?access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/collaborators`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all collaborators', async () => {
@@ -207,11 +207,11 @@ describe('GithubSource', () => {
     describe('getAllUser', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues?access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/issues`)
             .reply('200', fixtures.response);
 
             nock(URL)
-            .get(`/user/repos?access_token=${config.token}`)
+            .get(`/user/repos`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all orgs', async () => {
@@ -225,11 +225,11 @@ describe('GithubSource', () => {
     describe('listIssues', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues?access_token=${config.token}`)
+            .get(`/repos/${config.org}/${config.repo}/issues`)
             .reply('200', fixtures.response);
 
             nock(URL)
-            .get(`/orgs/${config.org}/repos?access_token=${config.token}`)
+            .get(`/orgs/${config.org}/repos`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all orgs', async () => {
