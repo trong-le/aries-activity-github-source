@@ -1,11 +1,12 @@
 require('dotenv').config();
 
 export default {
-	user: 'astronomerio',
 	token: process.env.TOKEN,
-	repo: 'all_org',
-    org: 'astronomerio',
-    method: 'listIssues',
-    state: 'open',
-    number: '1337'
+	user : "macmccann",
+    method : "listOrgRepos",
+    method : "listAssignees",
+                repo : "allOrg",
+    org : "aries-data",
+    owner : "aries-data",
+    issueNum : "1"
 };

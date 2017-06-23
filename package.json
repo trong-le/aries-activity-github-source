@@ -8,7 +8,7 @@
     "test-watch": "mocha -w --require babel-polyfill --compilers js:babel-register",
     "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
     "lint": "eslint lib",
-    "build-image": "docker build --no-cache -t astronomerio/github-source .",
+    "build-image": "docker build -t astronomerio/github-source:issueTests .",
     "tail": "tail -f app.log | bunyan -o short"
   },
   "author": "",
@@ -28,9 +28,9 @@
     "nock": "^7.0.2"
   },
   "dependencies": {
-    "aries-data": "aries-data/aries-data",
+    "aries-data": "^2.1.1",
     "es6-promisify": "^4.0.0",
-    "github": "^3.1.1",
+    "github": "^9.2.0",
     "lodash.flattendeep": "^4.4.0",
     "mocha": "^3.2.0"
   }

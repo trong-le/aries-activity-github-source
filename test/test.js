@@ -7,6 +7,7 @@ import * as fixtures from './fixtures';
 const URL = 'https://api.github.com';
 
 describe('GithubSource', () => {
+
     describe('listIssues', () => {
     	before(function() {
     		nock(URL)
