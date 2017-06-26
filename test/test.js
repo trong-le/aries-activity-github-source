@@ -16,7 +16,7 @@ describe('GithubSource', () => {
     	});
     	it ('authenticates the client and gets all issues', async () => {
 	        const source = new GithubSource();
-	        const client = source.authenticatedClient(config);
+	        const client = source.unauthenticatedClient(config);
 	        const data = await source.listIssues(config, client);
 	        assert.isOk(data);
 	    });
@@ -30,7 +30,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all assignees', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listAssignees(config, client);
             assert.isOk(data);
         });
@@ -44,7 +44,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all issue comments', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listIssueComments(config, client);
             assert.isOk(data);
         });
@@ -58,7 +58,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all repo comments', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listRepoComments(config, client);
             assert.isOk(data);
         });
@@ -72,7 +72,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all issue events', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listIssueEvents(config, client);
             assert.isOk(data);
         });
@@ -86,7 +86,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all repo events', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listRepoEvents(config, client);
             assert.isOk(data);
         });
@@ -100,7 +100,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all pull requests', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listPullRequests(config, client);
             assert.isOk(data);
         });
@@ -114,7 +114,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all repos', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listRepos(config, client);
             assert.isOk(data);
         });
@@ -128,7 +128,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all merged pull requests', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listMergedPullRequests(config, client);
             assert.isOk(data);
         });
@@ -142,7 +142,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all repos for user', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listReposForUser(config, client);
             assert.isOk(data);
         });
@@ -156,7 +156,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all repos for org', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listOrgRepos(config, client);
             assert.isOk(data);
         });
@@ -170,7 +170,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all repo commit comments', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listRepoCommitComments(config, client);
             assert.isOk(data);
         });
@@ -184,7 +184,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all repo commits', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listRepoCommits(config, client);
             assert.isOk(data);
         });
@@ -198,7 +198,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all collaborators', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listCollaborators(config, client);
             assert.isOk(data);
         });
@@ -216,7 +216,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all orgs', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listIssues(config, client);
             assert.isOk(data);
         });
@@ -234,7 +234,7 @@ describe('GithubSource', () => {
         });
         it ('authenticates the client and gets all orgs', async () => {
             const source = new GithubSource();
-            const client = source.authenticatedClient(config);
+            const client = source.unauthenticatedClient(config);
             const data = await source.listIssues(config, client);
             assert.isOk(data);
         });
