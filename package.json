@@ -43,6 +43,7 @@
     "es6-promisify": "^4.0.0",
     "github": "^9.2.0",
     "lodash.flattendeep": "^4.4.0",
+    "lodash.remove": "^4.7.0",
     "mocha": "^3.2.0"
   }
 }
