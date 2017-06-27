@@ -1,5 +1,5 @@
 export default {
-	user : "macmccann",
+    user : "macmccann",
     method : "listOrgRepos",
     method : "listAssignees",
     repo : "allOrg",
