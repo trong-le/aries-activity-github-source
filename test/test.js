@@ -29,7 +29,7 @@ describe('GithubSource', () => {
 	    });
     });
 
-    describe('listAssignees', () => {
+    describe('listAvailableAssignees', () => {
         before(function() {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/assignees`)
@@ -38,7 +38,7 @@ describe('GithubSource', () => {
         it ('authenticates the client and gets all assignees', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
-            const data = await source.listAssignees(config, client);
+            const data = await source.listAvailableAssignees(config, client);
             assert.isOk(data);
         });
     });
