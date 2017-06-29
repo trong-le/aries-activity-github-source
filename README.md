@@ -12,8 +12,8 @@ This integration uses 13 methods.
 ### List Issues
 `listIssues` - List all issues for the specified repository.
 
-### List Assignees
-`listAssignees` - Lists all the available assignees to which issues may be assigned.
+### List Available Assignees
+`listAvailableAssignees` - Lists all the available assignees to which issues may be assigned.
 
 ### List Issue Comments
 `listIssueComments` - Lists all comments in the specified repository and issue.
