@@ -1,7 +1,10 @@
 export default {
-	user: 'astronomerio',
-	token: process.env.TOKEN,
-	repo: 'all_org',
-    org: 'astronomerio',
-    method: 'listIssues'
+    user : "macmccann",
+    method : "listOrgRepos",
+    method : "listAssignees",
+    repo : "allOrg",
+    org : "aries-data",
+    owner : "aries-data",
+    issueNum : "1",
+    number: "1",
 };
