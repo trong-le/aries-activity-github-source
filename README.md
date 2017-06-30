@@ -89,7 +89,7 @@ The issue num is the number of the specified issue. This parameter is only in th
 ```
 
 ### State
-The state parameter specifies the state of the pull request inside of a repository. Default is `all`. This parameter is only used in `listPullRequests`.
+The state parameter specifies the state of the pull request or issue inside of a repository. Default is `all`. This parameter is used in `listPullRequests` and `listIssues`.
 ```javascript
 "state": "closed"
 ```
