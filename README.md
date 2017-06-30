@@ -77,9 +77,15 @@ The repo is the specific repository to grab information from. Required in all me
 ```
 
 ### Org
-The org is the name of the group-owned repository to grab data for. This parameter is only, and the single, used parameter for the method, `listOrgRepos`.
+The org is the name of the group-owned repository to grab data for. This parameter is used for the methods `listOrgRepos` and `getAllOrg`.
 ```javascript
 "org": "astronomer"
+```
+
+### Owner
+The owner is the name of the owner of the repository to grab data for. In most cases, this has the same value as that of the Org parameter. This parameter is used for the methods `listOrgRepos` and `getAllOrg`.
+```javascript
+"owner": "astronomer"
 ```
 
 ### Issue Num
