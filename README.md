@@ -78,6 +78,9 @@ The `repo` parameter is the specific repository to grab information from. Requir
 
 ### Since
 The `since` parameter specifies the earliest timestamp bound in the record request to Github. If set to `lastRun`, this parameter will be set to the last execution date of the pipeline. By default, this parameter is set to `2004-01-01T00:00:00.000Z`.
+```javascript
+"since": "lastRun"
+```
 
 ### State
 The `state` parameter specifies the state of the pull request inside of a repository. Default is `all`. This parameter is only used in `listPullRequests`.
@@ -93,6 +96,9 @@ The `token` parameter is the access token associated with your user account. An 
 
 ### Until
 The `until` parameter specifies the latest timestamp bound in the record request to Github. If set to `lastRun`, this parameter will be set to the last execution date of the pipeline. By default, this parameter is set to the current timestamp.
+```javascript
+"until": "lastRun"
+```
 
 ### User
 The user account to retrieve data for.
