@@ -15,6 +15,21 @@ function unauthenticatedClient() {
 
 describe('GithubSource', () => {
 
+    describe('listOrgMembers', () => {
+        before(function() {
+            nock(URL)
+            .get(`/orgs/${config.org}/members`)
+            .reply('200', fixtures.orgMembers);
+        });
+        it ('authenticates the client and gets all org members', async () => {
+            const source = new GithubSource();
+            const client = unauthenticatedClient(config);
+            const data = await source.listOrgMembers(config, client);
+            assert.isOk(data);
+        });
+    });
+
+
     describe('listIssues', () => {
     	before(function() {
     		nock(URL)
