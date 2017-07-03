@@ -52,46 +52,52 @@ This integration uses 13 methods.
 
 The configuration takes 3 required parameters, `user`, `password`, and `method`. And for each method, the required parameters vary.
 
-### User
-The user account to retrieve data for.
-```javascript
-"user": "astronomer"
-```
-
-### Token
-The token is the access token associated with your user account. An access token can be retrieved from your Settings > Personal Access Tokens (in the left sidebar under Developer settings) > Generate new access token. The access token is only visible upon creating it, so store it after generating it.
-```javascript
-"token": "17238f586ba33465iijr403ca2f6a8640b4847b8"
-```
-
-### Method
-The method used to retrieve data. List of methods can be found above.
-```javascript
-"method": "listIssues"
-```
-
-### Repo
-The repo is the specific repository to grab information from. Required in all methods but `listOrgRepos`. Note: setting the repo field to `allUser` or `allOrg` will cause the activity to first fetch a list of all repositories that the user account has access to (either personal or within an organization respectively), then run the specified `method` on each repository.
-```javascript
-"repo": "test_repo"
-```
-
-### Org
-The org is the name of the group-owned repository to grab data for. This parameter is only, and the single, used parameter for the method, `listOrgRepos`.
-```javascript
-"org": "astronomer"
-```
-
 ### Issue Num
 The issue num is the number of the specified issue. This parameter is only in the method, `listIssueEvents`.
 ```javascript
 "issueNum": "4"
 ```
 
+### Method
+The `method` parameter is the method used to retrieve data. List of methods can be found above.
+```javascript
+"method": "listIssues"
+```
+
+### Org
+The `org` parameter is the name of the group-owned repository to grab data for. This parameter is only, and the single, used parameter for the method, `listOrgRepos`.
+```javascript
+"org": "astronomer"
+```
+
+### Repo
+The `repo` parameter is the specific repository to grab information from. Required in all methods but `listOrgRepos`. Note: setting the repo field to `allUser` or `allOrg` will cause the activity to first fetch a list of all repositories that the user account has access to (either personal or within an organization respectively), then run the specified `method` on each repository.
+```javascript
+"repo": "test_repo"
+```
+
+### Since
+The `since` parameter specifies the earliest timestamp bound in the record request to Github. If set to `lastRun`, this parameter will be set to the last execution date of the pipeline. By default, this parameter is set to `2004-01-01T00:00:00.000Z`.
+
 ### State
-The state parameter specifies the state of the pull request inside of a repository. Default is `all`. This parameter is only used in `listPullRequests`.
+The `state` parameter specifies the state of the pull request inside of a repository. Default is `all`. This parameter is only used in `listPullRequests`.
 ```javascript
 "state": "closed"
+```
+
+### Token
+The `token` parameter is the access token associated with your user account. An access token can be retrieved from your Settings > Personal Access Tokens (in the left sidebar under Developer settings) > Generate new access token. The access token is only visible upon creating it, so store it after generating it.
+```javascript
+"token": "17238f586ba33465iijr403ca2f6a8640b4847b8"
+```
+
+### Until
+The `until` parameter specifies the latest timestamp bound in the record request to Github. If set to `lastRun`, this parameter will be set to the last execution date of the pipeline. By default, this parameter is set to the current timestamp.
+
+### User
+The user account to retrieve data for.
+```javascript
+"user": "astronomer"
 ```
 
 ## Response
