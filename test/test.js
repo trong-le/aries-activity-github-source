@@ -15,8 +15,23 @@ function unauthenticatedClient() {
 
 describe('GithubSource', () => {
 
+    describe('listOrgMembers', () => {
+        before(function() {
+            nock(URL)
+            .get(`/orgs/${config.org}/members`)
+            .reply('200', fixtures.orgMembers);
+        });
+        it ('authenticates the client and gets all org members', async () => {
+            const source = new GithubSource();
+            const client = unauthenticatedClient(config);
+            const data = await source.listOrgMembers(config, client);
+            assert.isOk(data);
+        });
+    });
+
+
     describe('listIssues', () => {
-        before(() => {
+        before(function() {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/issues`)
             .query(true)
@@ -106,7 +121,8 @@ describe('GithubSource', () => {
         before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/pulls`)
-            .reply('200', fixtures.response);
+            .query(true)
+            .reply('200', fixtures.response);;
         });
         it ('authenticates the client and gets all pull requests', async () => {
             const source = new GithubSource();
@@ -134,6 +150,7 @@ describe('GithubSource', () => {
         before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/pulls`)
+            .query(true)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all merged pull requests', async () => {
@@ -225,25 +242,6 @@ describe('GithubSource', () => {
             nock(URL)
             .get(`/user/repos`)
             .reply('200', fixtures.response);
-        });
-        it ('authenticates the client and gets all orgs', async () => {
-            const source = new GithubSource();
-            const client = unauthenticatedClient(config);
-            const data = await source.listIssues(config, client);
-            assert.isOk(data);
-        });
-    });
-
-    describe('listIssues', () => {
-        before(() => {
-            nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues`)
-            .query(true)
-            .reply('200', fixtures.issues);
-
-            nock(URL)
-            .get(`/orgs/${config.org}/repos`)
-            .reply('200', fixtures.issues);
         });
         it ('authenticates the client and gets all orgs', async () => {
             const source = new GithubSource();

@@ -27,6 +27,9 @@ This integration uses 13 methods.
 ### List Repo Events
 `listRepoEvents` - Lists the events that occurred for the specified repository.
 
+### List Org Members
+`listOrgMembers` - Lists all members for the specified organization.
+
 ### List Pull Requests
 `listPullRequests` - List all pull requests, filtered by state of pull request, for the given owner and repository.
 
