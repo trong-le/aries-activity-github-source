@@ -1,8 +1,8 @@
-import {assert} from 'chai';
-import GithubSource from '../lib/index.js';
+import { assert } from 'chai';
 import Github from 'github';
-import config from './test-config';
 import nock from 'nock';
+import GithubSource from '../lib/index';
+import config from './test-config';
 import * as fixtures from './fixtures';
 
 const URL = 'https://api.github.com';
@@ -16,21 +16,23 @@ function unauthenticatedClient() {
 describe('GithubSource', () => {
 
     describe('listIssues', () => {
-    	before(function() {
-    		nock(URL)
-    		.get(`/repos/${config.org}/${config.repo}/issues`)
-    		.reply('200', fixtures.response);
-    	});
-    	it ('authenticates the client and gets all issues', async () => {
-	        const source = new GithubSource();
-	        const client = unauthenticatedClient(config);
-	        const data = await source.listIssues(config, client);
-	        assert.isOk(data);
-	    });
+        before(() => {
+            nock(URL)
+            .get(`/repos/${config.org}/${config.repo}/issues`)
+            .query(true)
+            .reply('200', fixtures.response);
+        });
+        it ('authenticates the client and gets all issues', async () => {
+            const source = new GithubSource();
+            const client = unauthenticatedClient(config);
+            const cleanedConfig = source.getSinceUntil(config);
+            const data = await source.listIssues(cleanedConfig, client);
+            assert.isOk(data);
+        });
     });
 
     describe('listAvailableAssignees', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/assignees`)
             .reply('200', fixtures.response);
@@ -44,7 +46,7 @@ describe('GithubSource', () => {
     });
 
     describe('listIssueComments', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/issues/${config.number}/comments`)
             .reply('200', fixtures.response);
@@ -58,9 +60,10 @@ describe('GithubSource', () => {
     });
 
     describe('listRepoComments', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/issues/comments`)
+            .query(true)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all repo comments', async () => {
@@ -72,7 +75,7 @@ describe('GithubSource', () => {
     });
 
     describe('listIssueEvents', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/issues/${config.number}/timeline`)
             .reply('200', fixtures.response);
@@ -86,7 +89,7 @@ describe('GithubSource', () => {
     });
 
     describe('listRepoEvents', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/issues/events`)
             .reply('200', fixtures.response);
@@ -100,7 +103,7 @@ describe('GithubSource', () => {
     });
 
     describe('listPullRequests', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/pulls`)
             .reply('200', fixtures.response);
@@ -114,7 +117,7 @@ describe('GithubSource', () => {
     });
 
     describe('listRepos', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/user/repos`)
             .reply('200', fixtures.response);
@@ -128,7 +131,7 @@ describe('GithubSource', () => {
     });
 
     describe('listMergedPullRequests', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/pulls`)
             .reply('200', fixtures.response);
@@ -142,7 +145,7 @@ describe('GithubSource', () => {
     });
 
     describe('listReposForUser', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/users/${config.user}/repos`)
             .reply('200', fixtures.response);
@@ -156,7 +159,7 @@ describe('GithubSource', () => {
     });
 
     describe('listOrgRepos', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/orgs/${config.org}/repos`)
             .reply('200', fixtures.response);
@@ -170,7 +173,7 @@ describe('GithubSource', () => {
     });
 
     describe('listRepoCommitComments', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/comments`)
             .reply('200', fixtures.response);
@@ -184,9 +187,10 @@ describe('GithubSource', () => {
     });
 
     describe('listRepoCommits', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/commits`)
+            .query(true)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all repo commits', async () => {
@@ -198,7 +202,7 @@ describe('GithubSource', () => {
     });
 
     describe('listCollaborators', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/collaborators`)
             .reply('200', fixtures.response);
@@ -212,9 +216,10 @@ describe('GithubSource', () => {
     });
 
     describe('getAllUser', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/issues`)
+            .query(true)
             .reply('200', fixtures.response);
 
             nock(URL)
@@ -230,9 +235,10 @@ describe('GithubSource', () => {
     });
 
     describe('listIssues', () => {
-        before(function() {
+        before(() => {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues?since=${config.since}`)
+            .get(`/repos/${config.org}/${config.repo}/issues`)
+            .query(true)
             .reply('200', fixtures.issues);
 
             nock(URL)
