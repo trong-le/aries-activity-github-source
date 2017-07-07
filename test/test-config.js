@@ -7,4 +7,5 @@ export default {
     owner : "aries-data",
     issueNum : "1",
     number: "1",
+    state: "all"
 };

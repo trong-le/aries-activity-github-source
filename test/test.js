@@ -18,7 +18,7 @@ describe('GithubSource', () => {
     describe('listIssues', () => {
     	before(function() {
     		nock(URL)
-    		.get(`/repos/${config.org}/${config.repo}/issues`)
+    		.get(`/repos/${config.org}/${config.repo}/issues?state=${config.state}`)
     		.reply('200', fixtures.response);
     	});
     	it ('authenticates the client and gets all issues', async () => {
@@ -102,7 +102,7 @@ describe('GithubSource', () => {
     describe('listPullRequests', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/pulls?state=undefined`)
+            .get(`/repos/${config.org}/${config.repo}/pulls?state=${config.state}`)
             .reply('200', fixtures.response);;
         });
         it ('authenticates the client and gets all pull requests', async () => {
@@ -130,7 +130,7 @@ describe('GithubSource', () => {
     describe('listMergedPullRequests', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/pulls?state=undefined`)
+            .get(`/repos/${config.org}/${config.repo}/pulls?state=${config.state}`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all merged pull requests', async () => {
@@ -214,7 +214,7 @@ describe('GithubSource', () => {
     describe('getAllUser', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues`)
+            .get(`/repos/${config.org}/${config.repo}/issues?state=${config.state}`)
             .reply('200', fixtures.response);
 
             nock(URL)
@@ -232,7 +232,7 @@ describe('GithubSource', () => {
     describe('listIssues', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues`)
+            .get(`/repos/${config.org}/${config.repo}/issues?state=${config.state}`)
             .reply('200', fixtures.response);
 
             nock(URL)
