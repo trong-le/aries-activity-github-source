@@ -15,18 +15,37 @@ function unauthenticatedClient() {
 
 describe('GithubSource', () => {
 
+    describe('listOrgMembers', () => {
+        before(function() {
+            nock(URL)
+            .get(`/orgs/${config.org}/members`)
+            .reply('200', fixtures.orgMembers);
+        });
+        it ('authenticates the client and gets all org members', async () => {
+            const source = new GithubSource();
+            const client = unauthenticatedClient(config);
+            const data = await source.listOrgMembers(config, client);
+            assert.isOk(data);
+        });
+    });
+
+
     describe('listIssues', () => {
-    	before(function() {
-    		nock(URL)
-    		.get(`/repos/${config.org}/${config.repo}/issues?state=${config.state}`)
-    		.reply('200', fixtures.response);
-    	});
-    	it ('authenticates the client and gets all issues', async () => {
-	        const source = new GithubSource();
-	        const client = unauthenticatedClient(config);
-	        const data = await source.listIssues(config, client);
-	        assert.isOk(data);
-	    });
+        before(function() {
+            nock(URL)
+            .get(`/repos/${config.org}/${config.repo}/issues?state=${config.state}`)
+            .reply('200', fixtures.response);
+
+            nock(URL)
+            .get(`/orgs/${config.org}/repos`)
+            .reply('200', fixtures.response);
+        });
+        it ('authenticates the client and gets all orgs', async () => {
+            const source = new GithubSource();
+            const client = unauthenticatedClient(config);
+            const data = await source.listIssues(config, client);
+            assert.isOk(data);
+        });
     });
 
     describe('listAvailableAssignees', () => {
@@ -219,24 +238,6 @@ describe('GithubSource', () => {
 
             nock(URL)
             .get(`/user/repos`)
-            .reply('200', fixtures.response);
-        });
-        it ('authenticates the client and gets all orgs', async () => {
-            const source = new GithubSource();
-            const client = unauthenticatedClient(config);
-            const data = await source.listIssues(config, client);
-            assert.isOk(data);
-        });
-    });
-
-    describe('listIssues', () => {
-        before(function() {
-            nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues?state=${config.state}`)
-            .reply('200', fixtures.response);
-
-            nock(URL)
-            .get(`/orgs/${config.org}/repos`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all orgs', async () => {
