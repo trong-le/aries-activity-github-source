@@ -232,12 +232,12 @@ describe('GithubSource', () => {
     describe('listIssues', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/issues`)
-            .reply('200', fixtures.response);
+            .get(`/repos/${config.org}/${config.repo}/issues?since=${config.since}`)
+            .reply('200', fixtures.issues);
 
             nock(URL)
             .get(`/orgs/${config.org}/repos`)
-            .reply('200', fixtures.response);
+            .reply('200', fixtures.issues);
         });
         it ('authenticates the client and gets all orgs', async () => {
             const source = new GithubSource();
