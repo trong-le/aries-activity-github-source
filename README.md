@@ -9,11 +9,14 @@ This is an integration for [Github](https://github.com/).
 ## Methods
 This integration uses 13 methods.
 
-### List Issues
-`listIssues` - List all issues for the specified repository.
-
 ### List Available Assignees
 `listAvailableAssignees` - Lists all the available assignees to which issues may be assigned.
+
+### List Collaborators
+`listCollaborators` - Lists all the collaborators for the specified repository.
+
+### List Issues
+`listIssues` - List all issues for the specified repository.
 
 ### List Issue Comments
 `listIssueComments` - Lists all comments in the specified repository and issue.
@@ -24,32 +27,29 @@ This integration uses 13 methods.
 ### List Issue Events
 `listIssueEvents` - Lists the events that occurred for the specified repository and issue.
 
-### List Repo Events
-`listRepoEvents` - Lists the events that occurred for the specified repository.
+### List Merged Pull Requests
+`listMergedPullRequests` - List all pull requests that have been merged.
 
 ### List Org Members
 `listOrgMembers` - Lists all members for the specified organization.
 
+### List Org Repos
+`listOrgRepos` - Lists all repositories for the specified organization.
+
 ### List Pull Requests
 `listPullRequests` - List all pull requests, filtered by state of pull request, for the given owner and repository.
-
-### List Merged Pull Requests
-`listMergedPullRequests` - List all pull requests that have been merged.
 
 ### List Repos
 `listRepos` - Lists all the repositories that are accessible by the authenticated user.
 
-### List Org Repos
-`listOrgRepos` - Lists all repositories for the specified organization.
+### List Repo Commits
+`listRepoCommits` - Lists all the commits for the specified repository.
 
 ### List Repo Commit Comments
 `listRepoCommitComments` - Lists the commit comments for the specified repository.
 
-### List Repo Commits
-`listRepoCommits` - Lists all the commits for the specified repository.
-
-### List Collaborators
-`listCollaborators` - Lists all the collaborators for the specified repository.
+### List Repo Events
+`listRepoEvents` - Lists the events that occurred for the specified repository.
 
 ## Configuration
 
