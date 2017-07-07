@@ -102,8 +102,8 @@ describe('GithubSource', () => {
     describe('listPullRequests', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/pulls?state=undefined`)
-            .reply('200', fixtures.response);;
+            .get(`/repos/${config.org}/${config.repo}/pulls`)
+            .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all pull requests', async () => {
             const source = new GithubSource();
@@ -130,7 +130,7 @@ describe('GithubSource', () => {
     describe('listMergedPullRequests', () => {
         before(function() {
             nock(URL)
-            .get(`/repos/${config.org}/${config.repo}/pulls?state=undefined`)
+            .get(`/repos/${config.org}/${config.repo}/pulls`)
             .reply('200', fixtures.response);
         });
         it ('authenticates the client and gets all merged pull requests', async () => {
