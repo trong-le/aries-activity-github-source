@@ -73,6 +73,12 @@ The `org` parameter is the name of the group-owned repository to grab data for. 
 "org": "astronomer"
 ```
 
+### Owner
+The `owner` parameter is the name of the profile in which the repository is nested, equal either to the `user` or `org` parameter. If using the `allOrg` method for repos, this is equal to the `org` parameter.
+```javascript
+"owner": "astronomer"
+```
+
 ### Repo
 The `repo` parameter is the specific repository to grab information from. Required in all methods but `listOrgRepos`. Note: setting the repo field to `allUser` or `allOrg` will cause the activity to first fetch a list of all repositories that the user account has access to (either personal or within an organization respectively), then run the specified `method` on each repository.
 ```javascript
