@@ -13,8 +13,12 @@ This integration uses 13 methods.
 `listAvailableAssignees` - Lists all the available assignees to which issues may be assigned.
 
 *Parameters:*
-  - Repo
-  - Owner
+  - `Repo`
+  - `Owner`
+
+**Parameters:**
+  - `Repo`
+  - `Owner`
 
 ### List Collaborators
 `listCollaborators` - Lists all the collaborators for the specified repository.
