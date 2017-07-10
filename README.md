@@ -134,7 +134,7 @@ The `method` parameter is the method used to retrieve data. List of methods can 
 ```
 
 ### Org
-The `org` parameter is the name of the group-owned repository to grab data for. This parameter is only, and the single, used parameter for the method, `listOrgRepos`.
+The `org` parameter is the name of the group-owned repository to grab data for.
 ```javascript
 "org": "astronomer"
 ```
@@ -158,7 +158,7 @@ The `since` parameter specifies the earliest timestamp bound in the record reque
 ```
 
 ### State
-The `state` parameter specifies the state of the pull request inside of a repository. Default is `all`. This parameter is only used in `listPullRequests`.
+The `state` parameter specifies the state of the pull request inside of a repository. Default is `all`.
 ```javascript
 "state": "closed"
 ```
