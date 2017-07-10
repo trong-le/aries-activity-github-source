@@ -13,51 +13,109 @@ This integration uses 13 methods.
 `listAvailableAssignees` - Lists all the available assignees to which issues may be assigned.
 
 *Parameters:*
-  - `Repo`
-  - `Owner`
-
-**Parameters:**
-  - `Repo`
-  - `Owner`
+  - `owner`
+  - `repo`
 
 ### List Collaborators
 `listCollaborators` - Lists all the collaborators for the specified repository.
 
+*Parameters:*
+  - `owner`
+  - `repo`
+
 ### List Issues
 `listIssues` - List all issues for the specified repository.
+
+*Parameters:*
+  - `owner`
+  - `repo`
+  - `since` (optional)
+  - `state` (optional)
 
 ### List Issue Comments
 `listIssueComments` - Lists all comments in the specified repository and issue.
 
-### List Repo Comments
-`listRepoComments` - Lists all comments in the specified repository.
+*Parameters:*
+  - `owner`
+  - `number`
+  - `repo`
+  - `since` (optional)
 
 ### List Issue Events
 `listIssueEvents` - Lists the events that occurred for the specified repository and issue.
 
+*Parameters:*
+  - `owner`
+  - `number`
+  - `repo`
+
 ### List Merged Pull Requests
 `listMergedPullRequests` - List all pull requests that have been merged.
+
+*Parameters:*
+  - `owner`
+  - `repo`
+  - `state` (optional)
 
 ### List Org Members
 `listOrgMembers` - Lists all members for the specified organization.
 
+*Parameters:*
+  - `org`
+
 ### List Org Repos
 `listOrgRepos` - Lists all repositories for the specified organization.
+
+*Parameters:*
+  - `org`
 
 ### List Pull Requests
 `listPullRequests` - List all pull requests, filtered by state of pull request, for the given owner and repository.
 
+*Parameters:*
+  - `owner`
+  - `repo`
+  - `state` (optional)
+
 ### List Repos
 `listRepos` - Lists all the repositories that are accessible by the authenticated user.
 
-### List Repo Commits
-`listRepoCommits` - Lists all the commits for the specified repository.
+*Parameters:*
+  - `user`
+
+### List Repo Comments
+`listRepoComments` - Lists all comments in the specified repository.
+
+*Parameters:*
+  - `owner`
+  - `repo`
+  - `since` (optional)
 
 ### List Repo Commit Comments
 `listRepoCommitComments` - Lists the commit comments for the specified repository.
 
+*Parameters:*
+  - `owner`
+  - `repo`
+
+### List Repo Commits
+`listRepoCommits` - Lists all the commits for the specified repository.
+
+*Parameters:*
+  - `owner`
+  - `repo`
+  - `since`
+  - `until`
+
 ### List Repo Events
 `listRepoEvents` - Lists the events that occurred for the specified repository.
+
+*Parameters:*
+  - `owner`
+  - `repo`
+  - `user`
+  - `since` (optional)
+  - `until` (optional)
 
 ## Configuration
 
