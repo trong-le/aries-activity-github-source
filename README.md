@@ -11,7 +11,8 @@ This integration uses 13 methods.
 
 ### List Available Assignees
 `listAvailableAssignees` - Lists all the available assignees to which issues may be assigned.
-*Parameters: *
+
+*Parameters:*
   - Repo
   - Owner
 
