@@ -122,7 +122,7 @@ This integration uses 13 methods.
 The configuration takes 3 required parameters, `user`, `password`, and `method`. And for each method, the required parameters vary.
 
 ### Issue Num
-The issue num is the number of the specified issue. This parameter is only in the method, `listIssueEvents`.
+The issue num is the number of the specified issue.
 ```javascript
 "issueNum": "4"
 ```
