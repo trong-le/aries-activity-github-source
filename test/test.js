@@ -30,7 +30,7 @@ describe('GithubSource', () => {
     });
 
     describe('listIssues', () => {
-        before(function() {
+        beforeEach(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/issues`)
             .query(true)
@@ -43,6 +43,17 @@ describe('GithubSource', () => {
             const cleanedConfig = source.getSinceUntil(config);
             const data = await source.listIssues(cleanedConfig, client);
             assert.isOk(data);
+        });
+
+        it('adds the repoName field if appendRepo is true', async () => {
+            const source = new GithubSource();
+            const client = unauthenticatedClient(config);
+            const cleanedConfig = source.getSinceUntil(config);
+            cleanedConfig.appendRepo = true;
+            const data = await source.listIssues(cleanedConfig, client);
+
+            assert.isOk(data);
+            assert.equal(data[0].repoName, 'allOrg');
         });
     });
 
