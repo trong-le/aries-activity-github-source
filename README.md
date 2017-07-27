@@ -15,6 +15,7 @@ This integration uses 13 methods.
 *Parameters:*
   - `owner`
   - `repo`
+  - `appendRepo` (optional)
 
 ### List Collaborators
 `listCollaborators` - Lists all the collaborators for the specified repository.
@@ -22,6 +23,7 @@ This integration uses 13 methods.
 *Parameters:*
   - `owner`
   - `repo`
+  - `appendRepo` (optional)
 
 ### List Issues
 `listIssues` - List all issues for the specified repository.
@@ -31,6 +33,7 @@ This integration uses 13 methods.
   - `repo`
   - `since` (optional)
   - `state` (optional)
+  - `appendRepo` (optional)
 
 ### List Issue Comments
 `listIssueComments` - Lists all comments in the specified repository and issue.
@@ -40,6 +43,7 @@ This integration uses 13 methods.
   - `number`
   - `repo`
   - `since` (optional)
+  - `appendRepo` (optional)
 
 ### List Issue Events
 `listIssueEvents` - Lists the events that occurred for the specified repository and issue.
@@ -48,6 +52,7 @@ This integration uses 13 methods.
   - `owner`
   - `number`
   - `repo`
+  - `appendRepo` (optional)
 
 ### List Merged Pull Requests
 `listMergedPullRequests` - List all pull requests that have been merged.
@@ -56,6 +61,7 @@ This integration uses 13 methods.
   - `owner`
   - `repo`
   - `state` (optional)
+  - `appendRepo` (optional)
 
 ### List Org Members
 `listOrgMembers` - Lists all members for the specified organization.
@@ -76,6 +82,7 @@ This integration uses 13 methods.
   - `owner`
   - `repo`
   - `state` (optional)
+  - `appendRepo` (optional)
 
 ### List Repos
 `listRepos` - Lists all the repositories that are accessible by the authenticated user.
@@ -90,6 +97,7 @@ This integration uses 13 methods.
   - `owner`
   - `repo`
   - `since` (optional)
+  - `appendRepo` (optional)
 
 ### List Repo Commit Comments
 `listRepoCommitComments` - Lists the commit comments for the specified repository.
@@ -97,6 +105,7 @@ This integration uses 13 methods.
 *Parameters:*
   - `owner`
   - `repo`
+  - `appendRepo` (optional)
 
 ### List Repo Commits
 `listRepoCommits` - Lists all the commits for the specified repository.
@@ -106,6 +115,7 @@ This integration uses 13 methods.
   - `repo`
   - `since`
   - `until`
+  - `appendRepo` (optional)
 
 ### List Repo Events
 `listRepoEvents` - Lists the events that occurred for the specified repository.
@@ -116,6 +126,7 @@ This integration uses 13 methods.
   - `user`
   - `since` (optional)
   - `until` (optional)
+  - `appendRepo` (optional)
 
 ## Configuration
 
@@ -181,8 +192,18 @@ The user account to retrieve data for.
 "user": "astronomer"
 ```
 
+## Append Repo
+
+Add `repoName` field in the response. `false` by default.
+
+```javascript
+"appendRepo": false
+```
+
 ## Response
-This is an example response with the `listIssues` endpoint.
+
+This is an example response with the `listIssues` endpoint with `appendRepo` set to `false`:
+
 ```javascript
   {
     "id": 1,

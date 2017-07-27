@@ -14,14 +14,14 @@ function unauthenticatedClient() {
 }
 
 describe('GithubSource', () => {
-
     describe('listOrgMembers', () => {
-        before(function() {
+        before(() => {
             nock(URL)
             .get(`/orgs/${config.org}/members`)
             .reply('200', fixtures.orgMembers);
         });
-        it ('authenticates the client and gets all org members', async () => {
+
+        it('authenticates the client and gets all org members', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listOrgMembers(config, client);
@@ -29,20 +29,31 @@ describe('GithubSource', () => {
         });
     });
 
-
     describe('listIssues', () => {
-        before(function() {
+        beforeEach(() => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/issues`)
             .query(true)
-            .reply('200', fixtures.response);
+            .reply('200', fixtures.issues);
         });
-        it ('authenticates the client and gets all issues', async () => {
+
+        it('authenticates the client and gets all issues', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const cleanedConfig = source.getSinceUntil(config);
             const data = await source.listIssues(cleanedConfig, client);
             assert.isOk(data);
+        });
+
+        it('adds the repoName field if appendRepo is true', async () => {
+            const source = new GithubSource();
+            const client = unauthenticatedClient(config);
+            const cleanedConfig = source.getSinceUntil(config);
+            cleanedConfig.appendRepo = true;
+            const data = await source.listIssues(cleanedConfig, client);
+
+            assert.isOk(data);
+            assert.equal(data[0].repoName, 'allOrg');
         });
     });
 
@@ -52,7 +63,8 @@ describe('GithubSource', () => {
             .get(`/repos/${config.org}/${config.repo}/assignees`)
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all assignees', async () => {
+
+        it('authenticates the client and gets all assignees', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listAvailableAssignees(config, client);
@@ -66,7 +78,8 @@ describe('GithubSource', () => {
             .get(`/repos/${config.org}/${config.repo}/issues/${config.number}/comments`)
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all issue comments', async () => {
+
+        it('authenticates the client and gets all issue comments', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listIssueComments(config, client);
@@ -81,7 +94,8 @@ describe('GithubSource', () => {
             .query(true)
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all repo comments', async () => {
+
+        it('authenticates the client and gets all repo comments', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listRepoComments(config, client);
@@ -95,7 +109,8 @@ describe('GithubSource', () => {
             .get(`/repos/${config.org}/${config.repo}/issues/${config.number}/timeline`)
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all issue events', async () => {
+
+        it('authenticates the client and gets all issue events', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listIssueEvents(config, client);
@@ -109,7 +124,8 @@ describe('GithubSource', () => {
             .get(`/repos/${config.org}/${config.repo}/issues/events`)
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all repo events', async () => {
+
+        it('authenticates the client and gets all repo events', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listRepoEvents(config, client);
@@ -122,9 +138,10 @@ describe('GithubSource', () => {
             nock(URL)
             .get(`/repos/${config.org}/${config.repo}/pulls`)
             .query(true)
-            .reply('200', fixtures.response);;
+            .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all pull requests', async () => {
+
+        it('authenticates the client and gets all pull requests', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listPullRequests(config, client);
@@ -135,10 +152,11 @@ describe('GithubSource', () => {
     describe('listRepos', () => {
         before(() => {
             nock(URL)
-            .get(`/user/repos`)
+            .get('/user/repos')
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all repos', async () => {
+
+        it('authenticates the client and gets all repos', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listRepos(config, client);
@@ -153,7 +171,8 @@ describe('GithubSource', () => {
             .query(true)
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all merged pull requests', async () => {
+
+        it('authenticates the client and gets all merged pull requests', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listMergedPullRequests(config, client);
@@ -167,7 +186,8 @@ describe('GithubSource', () => {
             .get(`/users/${config.user}/repos`)
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all repos for user', async () => {
+
+        it('authenticates the client and gets all repos for user', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listReposForUser(config, client);
@@ -181,7 +201,8 @@ describe('GithubSource', () => {
             .get(`/orgs/${config.org}/repos`)
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all repos for org', async () => {
+
+        it('authenticates the client and gets all repos for org', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listOrgRepos(config, client);
@@ -195,7 +216,8 @@ describe('GithubSource', () => {
             .get(`/repos/${config.org}/${config.repo}/comments`)
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all repo commit comments', async () => {
+
+        it('authenticates the client and gets all repo commit comments', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listRepoCommitComments(config, client);
@@ -210,7 +232,8 @@ describe('GithubSource', () => {
             .query(true)
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all repo commits', async () => {
+
+        it('authenticates the client and gets all repo commits', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listRepoCommits(config, client);
@@ -224,7 +247,8 @@ describe('GithubSource', () => {
             .get(`/repos/${config.org}/${config.repo}/collaborators`)
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all collaborators', async () => {
+
+        it('authenticates the client and gets all collaborators', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listCollaborators(config, client);
@@ -240,10 +264,11 @@ describe('GithubSource', () => {
             .reply('200', fixtures.response);
 
             nock(URL)
-            .get(`/user/repos`)
+            .get('/user/repos')
             .reply('200', fixtures.response);
         });
-        it ('authenticates the client and gets all orgs', async () => {
+
+        it('authenticates the client and gets all orgs', async () => {
             const source = new GithubSource();
             const client = unauthenticatedClient(config);
             const data = await source.listIssues(config, client);
